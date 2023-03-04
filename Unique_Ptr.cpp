@@ -39,8 +39,7 @@ int main(int argc, char *argv[])
     std::cout << " Accessing value using unique_ptr p_z : " << *p_z << std::endl;
 
     // The unique pointer variables can be evaluated as Boolean values:
-    // true if the variable is managing a resource
-    // false if not
+    // If the unique pointer variable is managing a resource it evaluates to true and false otherwise
     // I can make use of the assert statement to check if a resource is being managed 
     assert(p_z);   // test if p_z is in use
     assert(!p_x);  // test that p_x is not in use

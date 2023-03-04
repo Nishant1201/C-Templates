@@ -38,14 +38,14 @@ int main()
 }
 
 // Output of the program reflects the number of uses of the shared resource
-// The count is originally when p_x is created
+// The count is originally 1 when p_x is created
 // Then 2 when p_y shares the resource,
 // and 1 when p_y relinquishes its use
 // Finally when p_x relinquishes its use, the count drops to zero
 
 /*
 Comments:
-1. In this example, we have just done simple assignment and reset operations,
+1. Although in our example, we have just done simple assignment and reset operations,
 however their use here actually represents general wider uses of a shared pointer.
 2. Copies of the pointers may be made when they are passed into functions or containers (vectors, sets)
 3. When functions or containers finish, their copy of the pointer is not needed and is, in effect, reset.
