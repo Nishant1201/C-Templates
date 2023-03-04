@@ -7,28 +7,32 @@ int main()
     // store its location in a shared_pointer.
     // The shared_pointer is templated with the type of its argument in angle brackets
     std::shared_ptr<int> p_x(new int);
-    
+    std::cout << " Shared pointer p_x is pointing to the memory location : " << p_x.get() << std::endl;
     // We can print out the use count of the shared pointer p_x to the console
     // by calling the use_count() method
-    std::cout << "p_x use count: " << p_x.use_count() << "\n";  // count is 1 when p_x is created
+    std::cout << " p_x use count: " << p_x.use_count() << "\n";  // count is 1 when p_x is created
     
     // // Let's use the pointer de-referencing to store a value in the memory location
     *p_x = 5;   // de-reference to alter contents
+    std::cout << " Value assigned using shared_ptr p_x : " << *p_x << std::endl;
 
     // Let's create another shared_pointer variable and assign it the same value as p_x
     std::shared_ptr<int> p_y = p_x; // This kind of assignment was not possible with the unique_ptr type
     // I can again call the use_count method after the assignment
-    std::cout << "p_x use count: " << p_x.use_count() << "\n"; // count is 2 when p_y shares the resource
+    std::cout << " p_x use count: " << p_x.use_count() << "\n"; // count is 2 when p_y shares the resource
+    std::cout << " Shared pointer p_y points to the memory location : " << p_y << std::endl;
+    std::cout << " Value assigned using shared_ptr p_y : " << *p_y << std::endl;
+
 
     // Now let us reset p_y so that it relinquishes any claim on memory
     p_y.reset();
-    std::cout << "p_x use count: " << p_x.use_count() << "\n";  // count is 1, p_y relinquishes using the shared pointer
+    std::cout << " p_x use count: " << p_x.use_count() << "\n";  // count is 1, p_y relinquishes using the shared pointer
 
     // Now, let us reset the original pointer
     p_x.reset();    // This has the same effect as p_x going out of use, i.e. its claim on the data is relinquished
     // In this case, the use count will drop to 0 and the smart pointer will automatically
     // free up the original memory. let us verify this by calling the use_count() method
-    std::cout << "p_x use count: " << p_x.use_count() << "\n";
+    std::cout << " p_x use count: " << p_x.use_count() << "\n";
 
     return 0;
 }
